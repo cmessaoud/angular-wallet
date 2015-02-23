@@ -1,0 +1,15 @@
+<div class="home-container">
+  <div class='new-operation'>
+    <span>amount</span>
+    <input type="number" ng-model="newOperationAmount">
+    <button ng-click="addOperation(newOperationAmount)">Create operation</button>
+  </div>
+  <div>
+    <button ng-click="resetOperations()"></button>
+  </div>
+
+  <div ng-repeat="operation in operations">
+    {{operation}}
+  </div>
+  <h1>total: {{total.value}}</h1>
+</div>

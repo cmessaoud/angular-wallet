@@ -1,0 +1,11 @@
+{
+  "name": "angular-wallet",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-jshint": "^1.9.2",
+    "gulp-serve": "^0.3.0"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "angular-wallet",
+  "version": "0.0.0",
+  "authors": [
+    "Adrien"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "~1.3.13",
+    "angular-route": "~1.3.13"
+  }
+}
