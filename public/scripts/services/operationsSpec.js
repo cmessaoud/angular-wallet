@@ -55,6 +55,7 @@ describe("Unit Testing OperationsService", function() {
       });
     });
 
+    //at this stage of the test the total is 2...
     it('should execute a callback with error if total resulting amount is negative', function () {
       OperationsService.addOperation(-3, function (err, operation) {
         expect(err).toBeDefined();
