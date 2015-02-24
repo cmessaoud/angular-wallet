@@ -32,15 +32,36 @@ angular.module('WalletApp')
     calculateTotal();
 
 
-    this.addOperation = function (amount) {
-      var operation = {
+    this.addOperation = function (amount, callback) {
+      //here amount can be strictly positive or strictly negative
+      var err,
+        operation;
+
+      //the two first verifications are already performed in the walletNewOperation directive but still usefull
+      //for separation of concerns in my opinion
+      amount = parseFloat(amount);
+      if (isNaN(amount)) {
+        err = new Error('amount must be a number');
+        return callback(err);
+      }
+      if (amount === 0) {
+        err = new Error('amount must be different from zero');
+        return callback(err);
+      }
+      if(total.value + amount < 0) {
+        err = new Error('the total after operation must remain positive');
+        return callback(err);
+      }
+      operation = {
         amount: amount,
         date: new Date()
       };
       operations.push(operation);
       calculateTotal();
       persistOperations();
+      callback(null, operation);
     };
+
 
     this.resetOperations = function () {
       operations.splice(0);
