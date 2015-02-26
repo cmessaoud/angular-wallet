@@ -3,11 +3,13 @@
 Installation
 ============
 
-You must have node installed.
+You must have node installed with gulp and karma
 
-npm install
-bower install
-gulp serve
+* npm install
+* bower install
+* gulp serve
 
-If you want to launch the tests you must have karma installed karma-cli
-*karma start
+
+If you want to launch the tests you first must have karma installed karma-cli
+
+* karma start
