@@ -1,6 +1,6 @@
 'use strict';
 angular.module('WalletApp')
-  .service('OperationsService', ['$window', 'CurrenciesService', function ($window, CurrenciesService) {
+  .service('OperationsService', ['$window', 'CurrenciesService', 'CustomErrorService', function ($window, CurrenciesService, CustomErrorService) {
 
     var localStorage = $window.localStorage,
       operations,
@@ -44,25 +44,24 @@ angular.module('WalletApp')
       //for separation of concerns in my opinion
       amount = parseFloat(amount);
       if (isNaN(amount)) {
-        err = new Error('amount must be a number');
+        err = new CustomErrorService.NotANumberError('amount must be a number');
         return callback(err);
       }
       if (amount === 0) {
-        err = new Error('amount must be different from zero');
+        err = new CustomErrorService.NotDifferentFromZeroError('amount must be different from zero');
         return callback(err);
       }
 
       amount = amount/selectedCurrency.rate;
-
       if(total.value + amount < 0) {
-        err = new Error('the total after operation must remain positive');
+        err = new CustomErrorService.TotalNotPositiveError('the total after operation must remain positive');
         return callback(err);
       }
       operation = {
         amount: amount,
         date: new Date()
       };
-      operations.push(operation);
+      operations.unshift(operation);
       calculateTotal();
       persistOperations();
       callback(null, operation);

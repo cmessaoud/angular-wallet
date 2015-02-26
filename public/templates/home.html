@@ -1,9 +1,22 @@
-<div class="home-container">
-  <div ng-repeat="currency in currencies" ng-click="selectCurrency($index)">{{currency.name}}</div>
-  <div>selected currency: {{selectedCurrency}}</div>
-  <wallet-new-operation></wallet-new-operation>
-  <div ng-repeat="operation in operations">
-    {{operation.amount | currency: selectedCurrency}}
+<div class="panel-container col-md-8 col-md-offset-2 col-xs-12">
+
+  <div class="jumbotron">
+    <h1>Welcome to Angular Wallet</h1>
+    <p>
+      This is a simple wallet application that allows you to add and remove amounts to and from your wallet.
+      Your browser html5 local web storage is used to persist informations and you can even use different currencies
+    </p>
+    <h2>Current Total: {{total.value | currency: selectedCurrency}}<i class="fa" ng-class="selectedCurrency.icon"></i></h2>
   </div>
-  <h1>total: {{total.value | currency: selectedCurrency}}</h1>
+
+  <wallet-new-operation></wallet-new-operation>
+
+  <div class="panel">
+    <div class="panel-heading"><h2>List of operations</h2></div>
+    <div class="panel-body">
+      <div class="list-group">
+        <li class="list-group-item" ng-class="{'alert-success': operation.amount>0, 'alert-danger': operation.amount<0}" ng-repeat="operation in operations">{{operation.amount | currency: selectedCurrency}}<span>{{selectedCurrency.name}}</span><span class="badge">{{operation.date | date:short}}</span></li>
+      </div>
+    </div>
+  </div>
 </div>

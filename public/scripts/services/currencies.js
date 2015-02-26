@@ -4,15 +4,18 @@ angular.module('WalletApp')
 
     var currencies = [{
         name: 'gbp',
-        rate: 1
+        rate: 1,
+        icon: 'fa-gbp'
       },
       {
         name: 'eur',
-        rate: 1.36
+        rate: 1.36,
+        icon: 'fa-eur'
       },
       {
         name: 'usd',
-        rate: 1.54
+        rate: 1.54,
+        icon: 'fa-usd'
     }];
 
     var selectedCurrency = angular.copy(currencies[0]);
@@ -20,6 +23,7 @@ angular.module('WalletApp')
     this.selectCurrency = function (index) {
       selectedCurrency.name = currencies[index].name;
       selectedCurrency.rate = currencies[index].rate;
+      selectedCurrency.icon = currencies[index].icon;
       //here instead of doing selectedCurrency = currencies[index];
       //I prefer to assign property by property so that the reference to selectedCurrency
       //(from home.ctrl) is always to the same object so that I don't need any watch

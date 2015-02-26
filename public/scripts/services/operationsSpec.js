@@ -13,7 +13,7 @@ describe("Unit Testing OperationsService", function() {
       OperationsService.addOperation(null, function (err, operation) {
         expect(err).toBeDefined();
         expect(operation).not.toBeDefined();
-        expect(err.message).toEqual('amount must be a number');
+        expect(err.name).toEqual('NotANumberError');
       });
     });
 
@@ -21,7 +21,7 @@ describe("Unit Testing OperationsService", function() {
       OperationsService.addOperation(undefined, function (err, operation) {
         expect(err).toBeDefined();
         expect(operation).not.toBeDefined();
-        expect(err.message).toEqual('amount must be a number');
+        expect(err.name).toEqual('NotANumberError');
       });
     });
 
@@ -29,7 +29,7 @@ describe("Unit Testing OperationsService", function() {
       OperationsService.addOperation('NotANumber', function (err, operation) {
         expect(err).toBeDefined();
         expect(operation).not.toBeDefined();
-        expect(err.message).toEqual('amount must be a number');
+        expect(err.name).toEqual('NotANumberError');
       });
     });
 
@@ -37,7 +37,7 @@ describe("Unit Testing OperationsService", function() {
       OperationsService.addOperation(0, function (err, operation) {
         expect(err).toBeDefined();
         expect(operation).not.toBeDefined();
-        expect(err.message).toEqual('amount must be different from zero');
+        expect(err.name).toEqual('NotDifferentFromZeroError');
       });
     });
 
@@ -60,7 +60,7 @@ describe("Unit Testing OperationsService", function() {
       OperationsService.addOperation(-3, function (err, operation) {
         expect(err).toBeDefined();
         expect(operation).not.toBeDefined();
-        expect(err.message).toEqual('the total after operation must remain positive');
+        expect(err.name).toEqual('TotalNotPositiveError');
       });
     });
   });

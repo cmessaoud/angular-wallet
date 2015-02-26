@@ -1,15 +1,8 @@
 'use strict';
 angular.module('WalletApp')
-  .controller('HomeCtrl', ['$scope', 'OperationsService', 'CurrenciesService', function ($scope, OperationsService, CurrenciesService) {
+  .controller('HomeCtrl', ['$scope', 'OperationsService', function ($scope, OperationsService) {
 
     $scope.operations = OperationsService.getOperations();
     $scope.total = OperationsService.getTotal();
-
-    $scope.currencies = CurrenciesService.getCurrencies();
-    $scope.selectedCurrency = CurrenciesService.getSelectedCurrency();
-
-    $scope.selectCurrency = function (index) {
-      CurrenciesService.selectCurrency(index);
-    }
 
   }]);

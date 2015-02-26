@@ -1,17 +1,17 @@
 'use strict';
 angular.module('WalletApp')
-  .controller('HeaderCtrl', ['$scope', 'OperationsService', function ($scope, OperationsService) {
+  .controller('HeaderCtrl', ['$scope', 'OperationsService', 'CurrenciesService', function ($scope, OperationsService, CurrenciesService) {
 
-    $scope.goToHome = function () {
 
+    $scope.currencies = CurrenciesService.getCurrencies();
+    $scope.selectedCurrency = CurrenciesService.getSelectedCurrency();
+
+    $scope.selectCurrency = function (index) {
+      CurrenciesService.selectCurrency(index);
     };
 
     $scope.resetOperations = function () {
       OperationsService.resetOperations();
-    };
-
-    $scope.viewSource = function () {
-
     };
 
   }]);

@@ -2,6 +2,6 @@
 angular.module('WalletApp')
   .filter('currency', [function () {
     return function (amount, currency) {
-      return amount * currency.rate;
+      return (amount*currency.rate).toFixed(2);
     };
   }]);
