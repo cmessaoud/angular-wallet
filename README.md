@@ -10,6 +10,6 @@ You must have node installed with gulp and karma
 * gulp serve
 
 
-If you want to launch the tests you first must have karma installed karma-cli
+If you want to launch the tests you first must have karma and karma-cli installed
 
 * karma start
